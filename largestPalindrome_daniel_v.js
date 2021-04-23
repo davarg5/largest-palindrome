@@ -6,7 +6,7 @@
 // Directions:
 //  1. Rename this file, substituting "yourname" with your name
 //  2. Replace "yourname" with your name in the variable below
-exports.name = "yourname";
+exports.name = "daniel_v";
 //  3. Add optimizations to the solution below
 //  4. Upload your optimized solution 
 
@@ -14,7 +14,14 @@ exports.name = "yourname";
 isPalindrome = (num) => {
     // determine if input value matches it's reversed value (i.e. check if it's a palindrome!)
     strNum = num.toString();
-    return strNum === strNum.split("").reverse().join("");
+    // return strNum === strNum.split("").reverse().join("");
+
+    for(let i=0; i<Math.floor(strNum.length/2); i++) {
+        if(strNum.charAt(i) !== strNum.charAt(strNum.length-i-1)) {
+            return false
+        }
+    }
+    return true
 }
 
 
@@ -28,19 +35,19 @@ exports.getLargestPalindrome = (N) => {
 
             // check if the product is a palindrome
             if (isPalindrome(i * j)) {
-
+                let pal = i * j
                 // check if it's larger than our largest palindrome
-                if (i * j > largestPalindrome) {
+                if (pal > largestPalindrome) {
                     
                     // update largest palindrome
-                    largestPalindrome = i * j;
+                    largestPalindrome = pal;
                 }
             }
         }
     }
 
     // return result
-    return largestPalidrome;
+    return largestPalindrome;
 }
 
 // input
@@ -53,3 +60,5 @@ const N = 3;
 console.time(exports.name)
 exports.getLargestPalindrome(N)
 console.timeEnd(exports.name)
+
+console.log('\n ', exports.getLargestPalindrome(3))
